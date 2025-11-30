@@ -1,0 +1,19 @@
+{
+  "name": "orangutan-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Blockchain-powered traceability backend for Orangutan Organics",
+  "scripts": {
+    "start": "node src/index-firebase.js",
+    "dev": "node src/index-firebase.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "ethers": "^6.8.0",
+    "express": "^4.18.2",
+    "firebase": "^12.6.0",
+    "node-fetch": "^3.3.2"
+  }
+}

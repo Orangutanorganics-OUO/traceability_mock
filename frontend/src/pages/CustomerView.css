@@ -1,0 +1,474 @@
+/* Simple, Mobile-Friendly Customer View Styles */
+
+* {
+  box-sizing: border-box;
+}
+
+.customer-view {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* Loading & Error */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 18px;
+  color: #666;
+}
+
+.error-box {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.error-box h2 {
+  color: #d32f2f;
+  margin-bottom: 10px;
+}
+
+/* Header */
+.header {
+  background: #2d5016;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  font-size: 20px;
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.verified-badge {
+  background: #4caf50;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.tampered-badge {
+  background: #d32f2f;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.not-registered-badge {
+  background: #757575;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.pending-badge {
+  background: #ff9800;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Content */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Section */
+.section {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.section h2 {
+  font-size: 22px;
+  color: #2d5016;
+  margin: 0 0 15px 0;
+}
+
+.section h3 {
+  font-size: 18px;
+  color: #2d5016;
+  margin: 0 0 12px 0;
+}
+
+.section h4 {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.section p {
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+/* Batch ID */
+.batch-id {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d5016;
+  padding: 15px;
+  background: #f9f9f9;
+  border-left: 4px solid #2d5016;
+  border-radius: 4px;
+}
+
+/* Blockchain Info */
+.blockchain-info {
+  background: #e8f5e9;
+  border-left: 4px solid #4caf50;
+}
+
+.blockchain-info h2 {
+  color: #2d5016;
+}
+
+.blockchain-details {
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+/* Village Info */
+.location-info {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.village-story {
+  line-height: 1.7;
+  color: #444;
+}
+
+/* Farmer Tabs */
+.farmer-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  background: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  background: #2d5016;
+  color: white;
+}
+
+.tab:hover {
+  background: #4a7c2f;
+  color: white;
+}
+
+/* Farmer Profile */
+.farmer-profile h2 {
+  margin-bottom: 5px;
+}
+
+.farmer-meta {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Image Gallery */
+.image-gallery {
+  margin-top: 10px;
+}
+
+.image-gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.image-caption {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.thumbnail {
+  min-width: 80px;
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.thumbnail.active {
+  border-color: #2d5016;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Videos */
+.video-item {
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.video-item p {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.info-item {
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-item .label {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+}
+
+.info-item .value {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.timeline-item .icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-content h4 {
+  margin-bottom: 5px;
+}
+
+.timeline-content p {
+  color: #666;
+  margin: 0;
+}
+
+/* Practices */
+.practices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.practice-tag {
+  background: #2d5016;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.family-info {
+  color: #444;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Soil Section */
+.soil-section {
+  background: #f0f4f0;
+}
+
+.soil-rating {
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: rgba(45, 80, 22, 0.1);
+  border-radius: 4px;
+}
+
+.soil-rating strong {
+  color: #2d5016;
+}
+
+.soil-comment {
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 6px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Location */
+.location-item {
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.location-item h4 {
+  margin-bottom: 15px;
+  color: #2d5016;
+  font-size: 18px;
+}
+
+.map-container {
+  margin: 15px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+  display: block;
+  width: 100%;
+  min-height: 300px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: #2d5016;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #4a7c2f;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 600px) {
+  .header {
+    padding: 12px 15px;
+  }
+
+  .header h1 {
+    font-size: 18px;
+  }
+
+  .content {
+    padding: 15px;
+  }
+
+  .section {
+    padding: 15px;
+  }
+
+  .section h2 {
+    font-size: 20px;
+  }
+
+  .section h3 {
+    font-size: 17px;
+  }
+
+  .back-btn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}

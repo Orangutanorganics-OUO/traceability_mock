@@ -1,0 +1,302 @@
+.blockchain-explanation {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.explanation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.explanation-header h3 {
+  color: #2c3e50;
+  margin: 0;
+}
+
+.toggle-details-btn {
+  background-color: #4a7c23;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.toggle-details-btn:hover {
+  background-color: #3d6a1c;
+}
+
+.explanation-summary {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #4a7c23;
+}
+
+.explanation-summary p {
+  margin: 0;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+.explanation-details {
+  margin-top: 1.5rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.step-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #4a7c23;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #4a7c23;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.verification-step .step-number {
+  background-color: #27ae60;
+  font-size: 1.5rem;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content h4 {
+  margin: 0 0 0.75rem 0;
+  color: #2c3e50;
+}
+
+.step-content p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  color: #555;
+}
+
+.step-content ul,
+.step-content ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.step-content li {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.arrow-down {
+  text-align: center;
+  font-size: 2rem;
+  color: #4a7c23;
+  margin: 0.5rem 0;
+}
+
+.hash-display-small {
+  background-color: white;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-top: 0.75rem;
+  border: 1px solid #ddd;
+}
+
+.hash-display-small code {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #e74c3c;
+  word-break: break-all;
+}
+
+.authentic-result {
+  background-color: #d4edda;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid #28a745;
+}
+
+.tampered-result {
+  background-color: #f8d7da;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid #dc3545;
+}
+
+.result-text {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+}
+
+.result-explanation {
+  margin: 0.5rem 0 1rem 0;
+  line-height: 1.6;
+}
+
+.hash-comparison {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.hash-item {
+  text-align: center;
+  width: 100%;
+}
+
+.hash-item strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.hash-item code {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #e74c3c;
+  word-break: break-all;
+  display: block;
+  background-color: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.equals {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.why-trust {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e0e0e0;
+}
+
+.why-trust h4 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.trust-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.trust-point {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.trust-point .icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.trust-point h5 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.trust-point p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.learn-more {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.learn-more h4 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+}
+
+.learn-more p {
+  margin: 0 0 1rem 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.learn-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #4a7c23;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.learn-link:hover {
+  background-color: #3d6a1c;
+}
+
+@media (max-width: 768px) {
+  .blockchain-explanation {
+    padding: 1rem;
+  }
+
+  .explanation-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .step {
+    flex-direction: column;
+  }
+
+  .hash-item code {
+    font-size: 0.65rem;
+  }
+
+  .trust-points {
+    grid-template-columns: 1fr;
+  }
+}
