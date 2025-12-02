@@ -187,7 +187,7 @@ function HomePage() {
 
         {/* Footer Actions */}
         <div className="footer-actions fade-in">
-          <button
+          {/* <button
             onClick={() => navigate('/analytics')}
             className="btn btn-outline"
           >
@@ -198,7 +198,7 @@ function HomePage() {
             className="btn btn-secondary ml-sm"
           >
             Admin Portal
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

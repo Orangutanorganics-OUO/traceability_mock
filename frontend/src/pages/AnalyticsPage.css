@@ -44,6 +44,14 @@
   margin: 0;
 }
 
+/* Charts Row - Side by Side Layout */
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
 /* Chart Section */
 .chart-section {
   margin-bottom: var(--spacing-xl);
@@ -143,6 +151,35 @@
   margin: 0;
 }
 
+.insight-card small {
+  color: var(--medium-gray);
+  font-size: var(--font-size-sm);
+  display: block;
+  margin-top: var(--spacing-xs);
+}
+
+/* Trend Insights */
+.trend-insights {
+  background: var(--off-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--light-gray);
+}
+
+.trend-insights h3 {
+  color: var(--primary-green-dark);
+  margin-bottom: var(--spacing-md);
+}
+
+.trend-insights ul {
+  margin: 0;
+}
+
+.trend-insights li {
+  color: var(--dark-gray);
+  font-size: var(--font-size-base);
+}
+
 /* Footer Actions */
 .footer-actions {
   text-align: center;
@@ -160,6 +197,10 @@
   .stat-card {
     flex-direction: column;
     text-align: center;
+  }
+
+  .charts-row {
+    grid-template-columns: 1fr;
   }
 
   .chart-section {

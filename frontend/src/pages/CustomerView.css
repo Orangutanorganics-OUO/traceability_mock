@@ -1,474 +1,878 @@
-/* Simple, Mobile-Friendly Customer View Styles */
+/* ===================================
+   CUSTOMER VIEW - MOBILE-FIRST DESIGN
+   =================================== */
 
-* {
-  box-sizing: border-box;
-}
-
+/* Base: Mobile First */
 .customer-view {
   min-height: 100vh;
-  background-color: #f5f5f5;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  background: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
 }
 
-/* Loading & Error */
-.loading {
+/* Header - Compact & Fixed */
+.cv-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: #f0f0f0;
+}
+
+.header-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  color: #1a1a1a;
+  text-transform: capitalize;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.batch-id-compact {
+  font-size: 12px;
+  color: #666;
+  margin: 2px 0 0 0;
+}
+
+/* Badges */
+.badge-verified {
+  background: #4caf50;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-tampered {
+  background: #f44336;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.badge-pending {
+  background: #ff9800;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* Main Content */
+.cv-main {
+  padding: 0 0 80px 0;
+  max-width: 100%;
+}
+
+/* ===================================
+   TRACEABILITY HERO SECTION
+   =================================== */
+
+.traceability-hero {
+  background: linear-gradient(135deg, #2d5016 0%, #4a7c2f 100%);
+  padding: 32px 16px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.hero-content-box {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-headline {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.hero-subline {
+  font-size: 18px;
+  margin: 0 0 16px 0;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.hero-description {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ===================================
+   TRACEABILITY INFORMATION SECTION
+   =================================== */
+
+.traceability-info {
+  background: #fff;
+  padding: 24px 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.traceability-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 20px 0;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.traceability-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trace-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  border-left: 4px solid #4caf50;
+  transition: all 0.2s;
+}
+
+.trace-item:hover {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transform: translateX(4px);
+}
+
+.trace-expect {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.trace-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.trace-expect h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px 0;
+  display: inline;
+}
+
+.trace-expect p {
+  font-size: 13px;
+  color: #666;
+  margin: 4px 0 0 0;
+  line-height: 1.4;
+}
+
+.trace-provides {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.check-mark {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.trace-provides p {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ===================================
+   IMAGE CAROUSEL
+   =================================== */
+
+.image-carousel-section {
+  margin-bottom: 16px;
+  background: #000;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+  background: #000;
+  overflow: hidden;
+}
+
+.carousel-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures both horizontal and vertical images fit properly */
+  object-position: center;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn.prev {
+  left: 12px;
+}
+
+.carousel-btn.next {
+  right: 12px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.indicator.active {
+  background: #fff;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.image-caption {
+  padding: 12px 16px;
+  background: #fff;
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* ===================================
+   CARDS & SECTIONS
+   =================================== */
+
+.info-card {
+  background: #fff;
+  padding: 20px 16px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+}
+
+.location-text {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+.elevation {
+  color: #999;
+}
+
+.village-desc {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Blockchain Card */
+.blockchain-card {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  padding: 20px 16px;
+  margin-bottom: 12px;
+  border-left: 4px solid #4caf50;
+}
+
+.blockchain-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: #2e7d32;
+  font-size: 16px;
+}
+
+.check-icon {
+  flex-shrink: 0;
+}
+
+.blockchain-text {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+}
+
+.blockchain-link {
+  display: inline-block;
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.blockchain-link:hover {
+  color: #1b5e20;
+  text-decoration: underline;
+}
+
+/* ===================================
+   FARMER SELECTOR
+   =================================== */
+
+.farmer-selector {
+  background: #fff;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.section-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+}
+
+.farmer-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.farmer-pill {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  background: #fff;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #333;
+}
+
+.farmer-pill:hover {
+  border-color: #4caf50;
+  background: #f1f8f4;
+}
+
+.farmer-pill.active {
+  background: #4caf50;
+  border-color: #4caf50;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Farmer Info */
+.farmer-meta {
+  font-size: 13px;
+  color: #999;
+  margin: 0 0 12px 0;
+}
+
+.farmer-info {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===================================
+   VIDEOS SECTION
+   =================================== */
+
+.videos-section {
+  padding: 16px;
+  background: #fff;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.video-card {
+  margin-bottom: 16px;
+}
+
+.video-card:last-child {
+  margin-bottom: 0;
+}
+
+.video-caption {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.video-player,
+.video-iframe {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  border-radius: 8px;
+  border: none;
+  background: #000;
+  position: relative;
+}
+
+.video-player {
+  padding-bottom: 0;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-link-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.video-link-btn:hover {
+  background: #45a049;
+}
+
+/* ===================================
+   DATA GRIDS
+   =================================== */
+
+.data-grid {
+  padding: 16px;
+  background: #fff;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.data-item {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.data-item.highlight {
+  background: #e8f5e9;
+  border: 1px solid #c8e6c9;
+}
+
+.data-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.data-value {
+  font-size: 16px;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+/* ===================================
+   SEASON TIMELINE
+   =================================== */
+
+.season-section {
+  padding: 16px;
+  background: #fff;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.season-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.season-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.season-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.season-content h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: #1a1a1a;
+}
+
+.season-content p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ===================================
+   TAGS & LISTS
+   =================================== */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  padding: 6px 12px;
+  background: #e0e0e0;
+  border-radius: 16px;
+  font-size: 12px;
+  color: #333;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin: 8px 0 0 0;
+}
+
+/* ===================================
+   SOIL SECTION
+   =================================== */
+
+.soil-section {
+  padding: 16px;
+  background: #fff;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.soil-rating-badge {
+  display: inline-block;
+  background: #4caf50;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.soil-comment {
+  font-size: 13px;
+  color: #666;
+  margin: 12px 0 0 0;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+/* ===================================
+   LOCATIONS / MAPS
+   =================================== */
+
+.locations-section {
+  padding: 16px;
+  background: #fff;
+  margin-bottom: 12px;
+}
+
+.location-card {
+  margin-bottom: 20px;
+}
+
+.location-card:last-child {
+  margin-bottom: 0;
+}
+
+.location-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #1a1a1a;
+  text-transform: capitalize;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: #e0e0e0;
+}
+
+.map-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.map-link {
+  display: inline-block;
+  color: #4caf50;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.map-link:hover {
+  color: #45a049;
+  text-decoration: underline;
+}
+
+/* ===================================
+   LOADING & ERROR STATES
+   =================================== */
+
+.loading,
+.error-box {
   text-align: center;
   padding: 60px 20px;
-  font-size: 18px;
+}
+
+.loading {
+  font-size: 16px;
   color: #666;
 }
 
 .error-box {
-  max-width: 500px;
-  margin: 60px auto;
-  padding: 30px;
-  background: white;
-  border-radius: 8px;
-  text-align: center;
+  background: #fff;
+  margin: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .error-box h2 {
-  color: #d32f2f;
-  margin-bottom: 10px;
-}
-
-/* Header */
-.header {
-  background: #2d5016;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.header h1 {
-  font-size: 20px;
-  margin: 0;
-  flex: 1;
-  min-width: 200px;
-}
-
-.back-btn {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.back-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.verified-badge {
-  background: #4caf50;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.tampered-badge {
-  background: #d32f2f;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.not-registered-badge {
-  background: #757575;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.pending-badge {
-  background: #ff9800;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-/* Content */
-.content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* Section */
-.section {
-  background: white;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.section h2 {
-  font-size: 22px;
-  color: #2d5016;
-  margin: 0 0 15px 0;
-}
-
-.section h3 {
-  font-size: 18px;
-  color: #2d5016;
+  color: #f44336;
   margin: 0 0 12px 0;
+  font-size: 20px;
 }
 
-.section h4 {
-  font-size: 16px;
-  color: #333;
-  margin: 0 0 8px 0;
-}
-
-.section p {
-  line-height: 1.6;
-  color: #333;
-  margin: 0 0 10px 0;
-}
-
-/* Batch ID */
-.batch-id {
-  font-size: 18px;
-  font-weight: 600;
-  color: #2d5016;
-  padding: 15px;
-  background: #f9f9f9;
-  border-left: 4px solid #2d5016;
-  border-radius: 4px;
-}
-
-/* Blockchain Info */
-.blockchain-info {
-  background: #e8f5e9;
-  border-left: 4px solid #4caf50;
-}
-
-.blockchain-info h2 {
-  color: #2d5016;
-}
-
-.blockchain-details {
-  margin-top: 15px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 4px;
-  word-break: break-all;
-}
-
-/* Village Info */
-.location-info {
+.error-box p {
   color: #666;
+  margin: 0 0 20px 0;
   font-size: 15px;
-  margin-bottom: 15px;
 }
 
-.village-story {
-  line-height: 1.7;
-  color: #444;
-}
-
-/* Farmer Tabs */
-.farmer-tabs {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.tab {
-  background: #f0f0f0;
+.error-box .btn {
+  background: #4caf50;
+  color: #fff;
+  padding: 12px 24px;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: all 0.2s;
-}
-
-.tab.active {
-  background: #2d5016;
-  color: white;
-}
-
-.tab:hover {
-  background: #4a7c2f;
-  color: white;
-}
-
-/* Farmer Profile */
-.farmer-profile h2 {
-  margin-bottom: 5px;
-}
-
-.farmer-meta {
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-/* Image Gallery */
-.image-gallery {
-  margin-top: 10px;
-}
-
-.image-gallery img {
-  width: 100%;
-  height: auto;
   border-radius: 8px;
-  display: block;
-}
-
-.image-caption {
-  text-align: center;
-  color: #666;
-  font-size: 14px;
-  margin-top: 10px;
-  font-style: italic;
-}
-
-.thumbnails {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-  overflow-x: auto;
-  padding-bottom: 5px;
-}
-
-.thumbnail {
-  min-width: 80px;
-  width: 80px;
-  height: 80px;
-  border-radius: 6px;
-  overflow: hidden;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.2s;
-}
-
-.thumbnail.active {
-  border-color: #2d5016;
-}
-
-.thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Videos */
-.video-item {
-  padding: 15px;
-  background: #f9f9f9;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.video-item p {
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-/* Info Grid */
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-@media (min-width: 600px) {
-  .info-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.info-item {
-  padding: 12px;
-  background: #f9f9f9;
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.info-item .label {
-  font-size: 13px;
-  color: #666;
-  font-weight: 500;
-}
-
-.info-item .value {
-  font-size: 16px;
-  color: #333;
+  font-size: 15px;
   font-weight: 600;
-}
-
-/* Timeline */
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.timeline-item {
-  display: flex;
-  gap: 15px;
-  align-items: flex-start;
-}
-
-.timeline-item .icon {
-  font-size: 32px;
-  line-height: 1;
-}
-
-.timeline-content {
-  flex: 1;
-}
-
-.timeline-content h4 {
-  margin-bottom: 5px;
-}
-
-.timeline-content p {
-  color: #666;
-  margin: 0;
-}
-
-/* Practices */
-.practices {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 15px;
-}
-
-.practice-tag {
-  background: #2d5016;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 13px;
-  display: inline-block;
-}
-
-.family-info {
-  color: #444;
-  line-height: 1.6;
-  font-style: italic;
-}
-
-/* Soil Section */
-.soil-section {
-  background: #f0f4f0;
-}
-
-.soil-rating {
-  font-size: 16px;
-  margin-bottom: 20px;
-  padding: 10px;
-  background: rgba(45, 80, 22, 0.1);
-  border-radius: 4px;
-}
-
-.soil-rating strong {
-  color: #2d5016;
-}
-
-.soil-comment {
-  margin-top: 15px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 6px;
-  line-height: 1.6;
-  font-style: italic;
-}
-
-/* Location */
-.location-item {
-  padding: 15px;
-  background: #f9f9f9;
-  border-radius: 6px;
-  margin-bottom: 15px;
-}
-
-.location-item h4 {
-  margin-bottom: 15px;
-  color: #2d5016;
-  font-size: 18px;
-}
-
-.map-container {
-  margin: 15px 0;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.map-container iframe {
-  display: block;
-  width: 100%;
-  min-height: 300px;
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  background: #2d5016;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 15px;
-  border: none;
   cursor: pointer;
   transition: background 0.2s;
 }
 
-.btn:hover {
-  background: #4a7c2f;
+.error-box .btn:hover {
+  background: #45a049;
 }
 
-/* Mobile Optimizations */
-@media (max-width: 600px) {
-  .header {
-    padding: 12px 15px;
+/* ===================================
+   TABLET & DESKTOP
+   =================================== */
+
+@media (min-width: 768px) {
+  .cv-header {
+    padding: 16px 24px;
   }
 
-  .header h1 {
-    font-size: 18px;
+  .product-title {
+    font-size: 22px;
   }
 
-  .content {
-    padding: 15px;
-  }
-
-  .section {
-    padding: 15px;
-  }
-
-  .section h2 {
-    font-size: 20px;
-  }
-
-  .section h3 {
-    font-size: 17px;
-  }
-
-  .back-btn {
+  .batch-id-compact {
     font-size: 13px;
-    padding: 6px 12px;
+  }
+
+  .cv-main {
+    max-width: 768px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+
+  .carousel-image-wrapper {
+    padding-bottom: 60%; /* Slightly less tall on larger screens */
+  }
+
+  .carousel-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .carousel-btn.prev {
+    left: 20px;
+  }
+
+  .carousel-btn.next {
+    right: 20px;
+  }
+
+  .info-card,
+  .blockchain-card,
+  .farmer-selector,
+  .videos-section,
+  .data-grid,
+  .season-section,
+  .soil-section,
+  .locations-section {
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 16px;
+  }
+
+  .image-carousel-section {
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 16px 0;
+  }
+
+  .grid-2 {
+    gap: 16px;
+  }
+
+  .data-item {
+    padding: 16px;
+  }
+
+  .map-wrapper {
+    padding-bottom: 56.25%; /* 16:9 on larger screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .cv-main {
+    max-width: 900px;
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
   }
 }
