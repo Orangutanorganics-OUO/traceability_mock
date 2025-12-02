@@ -183,98 +183,29 @@ function CustomerView() {
         </div>
       </section>
 
-      {/* Traceability Information Table */}
-      <section className="traceability-info">
-        <h3 className="traceability-title">What You — the Discerning Organic Customer — Will Be Glad You Know</h3>
-
-        <div className="traceability-grid">
-          <div className="trace-item">
-            <div className="trace-expect">
-              <span className="trace-icon">📄</span>
-              <h4>Where It Was Grown</h4>
-              <p>Which farm, which altitude</p>
-            </div>
-            <div className="trace-provides">
-              <span className="check-mark">✅</span>
-              <p>Farm origin, GPS/geographic location, elevation tags — e.g. 2,300m Himalayan valley</p>
-            </div>
-          </div>
-
-          <div className="trace-item">
-            <div className="trace-expect">
-              <span className="trace-icon">📄</span>
-              <h4>When It Was Grown</h4>
-              <p>Date, season, harvest time</p>
-            </div>
-            <div className="trace-provides">
-              <span className="check-mark">✅</span>
-              <p>Batch-level harvest date, crop cycle, seasonal context</p>
-            </div>
-          </div>
-
-          <div className="trace-item">
-            <div className="trace-expect">
-              <span className="trace-icon">📄</span>
-              <h4>How It Was Grown</h4>
-              <p>Input practices, pesticide-free status, soil/eco practices</p>
-            </div>
-            <div className="trace-provides">
-              <span className="check-mark">✅</span>
-              <p>Organic certification records, soil-health documentation, pesticide/natural-input logs</p>
-            </div>
-          </div>
-
-          <div className="trace-item">
-            <div className="trace-expect">
-              <span className="trace-icon">📄</span>
-              <h4>Supply Chain Journey</h4>
-              <p>Processing, packaging, transport</p>
-            </div>
-            <div className="trace-provides">
-              <span className="check-mark">✅</span>
-              <p>Processing & packaging history, batch numbers, traceable barcodes/QR codes linking to records</p>
-            </div>
-          </div>
-
-          <div className="trace-item">
-            <div className="trace-expect">
-              <span className="trace-icon">📄</span>
-              <h4>Certification & Compliance</h4>
-              <p>Organic standards, audit logs</p>
-            </div>
-            <div className="trace-provides">
-              <span className="check-mark">✅</span>
-              <p>Proof of compliance with relevant organic/regulatory standards, third-party audits or internal trace-records</p>
-            </div>
-          </div>
-
-          <div className="trace-item">
-            <div className="trace-expect">
-              <span className="trace-icon">📄</span>
-              <h4>The Farmer's Story</h4>
-              <p>Community, social impact</p>
-            </div>
-            <div className="trace-provides">
-              <span className="check-mark">✅</span>
-              <p>Farmer/co-op name, community info, social impact: empowering farmers, fair practices, sustainability</p>
-            </div>
-          </div>
-
-          <div className="trace-item">
-            <div className="trace-expect">
-              <span className="trace-icon">📄</span>
-              <h4>Sustainability Impact</h4>
-              <p>Environmental footprint, ethical sourcing</p>
-            </div>
-            <div className="trace-provides">
-              <span className="check-mark">✅</span>
-              <p>Real data on carbon footprint, sustainability practices, ethical sourcing, social impact — not just marketing claims</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       <main className="cv-main">
+        {/* Farmer Selector */}
+        {batch.farmers && batch.farmers.length > 1 && (
+          <section className="farmer-selector">
+            <h3 className="section-label">Our Farmers ({batch.farmers.length})</h3>
+            <div className="farmer-pills">
+              {batch.farmers.map((farmer, index) => (
+                <button
+                  key={index}
+                  className={`farmer-pill ${index === selectedFarmerIndex ? 'active' : ''}`}
+                  onClick={() => {
+                    setSelectedFarmerIndex(index);
+                    setSelectedImageIndex(0);
+                  }}
+                >
+                  {farmer.farmer_name}
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
         {/* Image Carousel - Priority for mobile */}
         {images.length > 0 && (
           <section className="image-carousel-section">
@@ -322,8 +253,8 @@ function CustomerView() {
 
         {/* Village Card */}
         <section className="info-card village-card">
-          <div className="card-icon">🏔️</div>
-          <h2 className="card-title">{batch.village?.name}</h2>
+          {/* <div>Village name:</div> */}
+          <h2 className="card-title">Village name: {batch.village?.name}</h2>
           <p className="location-text">
             📍 {batch.village?.district}, {batch.village?.state}
             {batch.village?.elevation_m && <span className="elevation"> • {batch.village?.elevation_m}m</span>}
@@ -354,26 +285,7 @@ function CustomerView() {
           </section>
         )}
 
-        {/* Farmer Selector */}
-        {batch.farmers && batch.farmers.length > 1 && (
-          <section className="farmer-selector">
-            <h3 className="section-label">Our Farmers ({batch.farmers.length})</h3>
-            <div className="farmer-pills">
-              {batch.farmers.map((farmer, index) => (
-                <button
-                  key={index}
-                  className={`farmer-pill ${index === selectedFarmerIndex ? 'active' : ''}`}
-                  onClick={() => {
-                    setSelectedFarmerIndex(index);
-                    setSelectedImageIndex(0);
-                  }}
-                >
-                  {farmer.farmer_name}
-                </button>
-              ))}
-            </div>
-          </section>
-        )}
+        
 
         {/* Current Farmer Details */}
         {currentFarmer && (
@@ -391,6 +303,46 @@ function CustomerView() {
               )}
               {currentFarmer.farmer_info && <p className="farmer-info">{currentFarmer.farmer_info}</p>}
             </section>
+
+            {/* Farm Locations - Compact Maps */}
+            {locations.length > 0 && (
+              <section className="locations-section">
+                <h3 className="section-label">Farm Locations</h3>
+                {locations.map((location, index) => {
+                  const farmName = Object.keys(location)[0];
+                  const mapsUrl = Object.values(location)[0];
+                  const embedUrl = convertToEmbedUrl(mapsUrl);
+
+                  return (
+                    <div key={index} className="location-card">
+                      <h4 className="location-name">{farmName.replace(/_/g, ' ')}</h4>
+                      {embedUrl && (
+                        <div className="map-wrapper">
+                          <iframe
+                            src={embedUrl}
+                            className="map-iframe"
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title={`Map for ${farmName}`}
+                          />
+                        </div>
+                      )}
+                      {mapsUrl && (
+                        <a
+                          href={mapsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="map-link"
+                        >
+                          Open in Google Maps →
+                        </a>
+                      )}
+                    </div>
+                  );
+                })}
+              </section>
+            )}
 
             {/* Videos Section with Embedded Players */}
             {videos.length > 0 && (
@@ -604,48 +556,90 @@ function CustomerView() {
               </section>
             )} */}
 
-            {/* Farm Locations - Compact Maps */}
-            {locations.length > 0 && (
-              <section className="locations-section">
-                <h3 className="section-label">Farm Locations</h3>
-                {locations.map((location, index) => {
-                  const farmName = Object.keys(location)[0];
-                  const mapsUrl = Object.values(location)[0];
-                  const embedUrl = convertToEmbedUrl(mapsUrl);
-
-                  return (
-                    <div key={index} className="location-card">
-                      <h4 className="location-name">{farmName.replace(/_/g, ' ')}</h4>
-                      {embedUrl && (
-                        <div className="map-wrapper">
-                          <iframe
-                            src={embedUrl}
-                            className="map-iframe"
-                            allowFullScreen=""
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            title={`Map for ${farmName}`}
-                          />
-                        </div>
-                      )}
-                      {mapsUrl && (
-                        <a
-                          href={mapsUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="map-link"
-                        >
-                          Open in Google Maps →
-                        </a>
-                      )}
-                    </div>
-                  );
-                })}
-              </section>
-            )}
+            
           </>
         )}
       </main>
+      {/* Traceability Information Table */}
+      <section className="traceability-info">
+        
+
+        <div className="traceability-grid">
+
+          <div className="trace-item">
+            <div className="trace-expect">
+              <span className="trace-icon">📄</span>
+              <h4>Supply Chain Journey</h4>
+              <p>Processing, packaging, transport</p>
+            </div>
+            <div className="trace-provides">
+              <div className="supply-chain-flow">
+                <div className="flow-step">
+                  <div className="flow-icon">🏔️</div>
+                  <div className="flow-content">
+                    <h5>Himalayan Cluster Village</h5>
+                    <p>Elevation &gt; 1,800m</p>
+                  </div>
+                </div>
+
+                <div className="flow-arrow">↓</div>
+
+                <div className="flow-step">
+                  <div className="flow-icon">☀️</div>
+                  <div className="flow-content">
+                    <h5>Processing</h5>
+                    <p>Sun drying, Cleaning, Sorting, packed in Bhangeli – with Himalayan air inside</p>
+                  </div>
+                </div>
+
+                <div className="flow-arrow">↓</div>
+
+                <div className="flow-step">
+                  <div className="flow-icon">🚚</div>
+                  <div className="flow-content">
+                    <h5>First Mile Logistics</h5>
+                    <p>Courier partner / pickup hub - Uttarkashi</p>
+                  </div>
+                </div>
+
+                <div className="flow-arrow">↓</div>
+
+                <div className="flow-step">
+                  <div className="flow-icon">🏠</div>
+                  <div className="flow-content">
+                    <h5>Last Mile Delivery</h5>
+                    <p>Your home – pure, nutritious, traceable, Himalayan produce</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="trace-item">
+            <div className="trace-expect">
+              <span className="trace-icon">📄</span>
+              <h4>Certification & Compliance</h4>
+              <p>Organic standards, audit logs</p>
+            </div>
+            <div className="trace-provides">
+              {/* <span className="check-mark">✅</span> */}
+              <p>✅ Our base village, Bhangeli is PSG certified.</p>
+            </div>
+          </div>
+
+          <div className="trace-item">
+            <div className="trace-expect">
+              <span className="trace-icon">📄</span>
+              <h4>Sustainability Impact</h4>
+              <p>Environmental footprint, ethical sourcing</p>
+            </div>
+            <div className="trace-provides">
+              {/* <span className="check-mark">✅</span> */}
+              <p>✅ We track and share batch-level sustainability metrics: carbon footprint, soil organic carbon(SOC), water use efficiency, and fair-value sourcing.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
